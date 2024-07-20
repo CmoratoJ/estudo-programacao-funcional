@@ -1,8 +1,15 @@
 <?php
 
+use Alura\Fp\Maybe;
+
+use function igorw\pipeline;
+
+require_once 'vendor/autoload.php';
+
+/** @var Maybe $dados */
 $dados = require 'dados.php';
 
-$contador = count($dados);
+$contador = count($dados->getOrElse([]));
 
 echo "Número de países: $contador\n";
 
@@ -22,8 +29,19 @@ $verificaSePaisTemEspacoNoNome = fn (array $pais): bool => str_contains($pais['p
 $comparaMedalhas = fn (array $medalhasPais1, array $medalhasPais2) 
     => fn (string $modalidade): int => $medalhasPais2[$modalidade] <=> $medalhasPais1[$modalidade];
 
-$dados = array_map('convertePaisParaLetraMaiuscula', $dados);
-$dados = array_filter($dados, $verificaSePaisTemEspacoNoNome);
+$nomesDePaisesEmMaiusculo = fn (Maybe $dados) => Maybe::of(array_map('convertePaisParaLetraMaiuscula', $dados->getOrElse([])));
+$filtraPaisesSemEspacoNoNome = fn (Maybe $dados) => Maybe::of(array_filter($dados->getOrElse([]), $verificaSePaisTemEspacoNoNome));
+
+$funcoes = pipeline(
+    $nomesDePaisesEmMaiusculo, 
+    $filtraPaisesSemEspacoNoNome
+);
+$dados = $funcoes($dados);
+
+var_dump($dados->getOrElse([]));
+
+exit();
+
 
 $medalhas = array_reduce(
     array_map(

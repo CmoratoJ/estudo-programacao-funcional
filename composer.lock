@@ -4,8 +4,56 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "adc392ef7340a30855efcdacc40133fd",
-    "packages": [],
+    "content-hash": "4638b7ffdfd6c590cf185c2808c13ac0",
+    "packages": [
+        {
+            "name": "igorw/compose",
+            "version": "v1.0.1",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/igorw/compose.git",
+                "reference": "c8708d019e221ac64c82cf34204cc6f6933aa237"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/igorw/compose/zipball/c8708d019e221ac64c82cf34204cc6f6933aa237",
+                "reference": "c8708d019e221ac64c82cf34204cc6f6933aa237",
+                "shasum": ""
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "files": [
+                    "src/compose.php"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Igor Wiedler",
+                    "email": "igor@wiedler.ch",
+                    "homepage": "http://wiedler.ch/igor/"
+                }
+            ],
+            "description": "Function composition.",
+            "keywords": [
+                "composition",
+                "functional"
+            ],
+            "support": {
+                "issues": "https://github.com/igorw/compose/issues",
+                "source": "https://github.com/igorw/compose/tree/v1.0.1"
+            },
+            "time": "2013-04-20T00:49:20+00:00"
+        }
+    ],
     "packages-dev": [],
     "aliases": [],
     "minimum-stability": "stable",
